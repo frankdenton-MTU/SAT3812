@@ -3,244 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Website</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem 0;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            transition: background-color 0.3s;
-        }
-
-        nav ul li a:hover {
-            background-color: #555;
-        }
-
-        main {
-            background-color: white;
-            margin: 2rem 0;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .hero {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        .content-section {
-            margin-bottom: 2rem;
-        }
-
-        .content-section h2 {
-            color: #333;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 0.5rem;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background-color: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid #007bff;
-        }
-
-        .feature-card h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav ul li {
-                margin-bottom: 10px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <meta name="description" content="Gold Sky - A fun basket game where you collect falling gold pieces">
+    <title>Gold Sky - Collect the Gold!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <section class="hero">
-                <h1>Welcome to My Website</h1>
-                <p>This is a default homepage template ready for customization</p>
-                <a href="#about" class="btn">Learn More</a>
-            </section>
-
-            <section id="about" class="content-section">
-                <h2>About Us</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </section>
-
-            <section id="services" class="content-section">
-                <h2>Our Services</h2>
-                <div class="features">
-                    <div class="feature-card">
-                        <h3>Web Design</h3>
-                        <p>Creating beautiful and functional websites that engage your audience and drive results.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Development</h3>
-                        <p>Building robust web applications with modern technologies and best practices.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Consulting</h3>
-                        <p>Providing expert advice on digital strategy and technology solutions for your business.</p>
-                    </div>
+    <!-- Game UI -->
+    <div id="gameContainer" class="game-container">
+        <!-- Top UI Bar -->
+        <div class="ui-bar" role="toolbar" aria-label="Game controls">
+            <div class="score-section">
+                <div class="score-item">
+                    <span class="label">Score:</span>
+                    <span id="currentScore" class="value">0</span>
                 </div>
-            </section>
-
-            <section id="contact" class="content-section">
-                <h2>Contact Us</h2>
-                <p>Ready to get started? Get in touch with us today!</p>
-                <p>Email: info@example.com</p>
-                <p>Phone: (555) 123-4567</p>
-            </section>
+                <div class="score-item">
+                    <span class="label">High:</span>
+                    <span id="highScore" class="value">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="label">Time:</span>
+                    <span id="timeLeft" class="value">60</span>
+                </div>
+            </div>
+            
+            <div class="control-section">
+                <button id="pauseBtn" class="control-btn" aria-label="Pause game">⏸️</button>
+                <button id="muteBtn" class="control-btn" aria-label="Toggle sound">🔊</button>
+                <button id="contrastBtn" class="control-btn" aria-label="Toggle high contrast">🎨</button>
+                <button id="debugBtn" class="control-btn" aria-label="Toggle debug mode">🐛</button>
+            </div>
         </div>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 My Website. All rights reserved.</p>
+        <!-- Game Canvas Area -->
+        <div id="gameArea" class="game-area" tabindex="0" role="application" aria-label="Gold Sky Game Area">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            
+            <!-- Mobile Touch Controls -->
+            <div class="mobile-controls" id="mobileControls">
+                <button class="touch-btn" id="leftBtn" aria-label="Move left">←</button>
+                <button class="touch-btn" id="rightBtn" aria-label="Move right">→</button>
+                <button class="touch-btn" id="upBtn" aria-label="Move up">↑</button>
+                <button class="touch-btn" id="downBtn" aria-label="Move down">↓</button>
+            </div>
         </div>
-    </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        <!-- Game Screens -->
+        <div id="startScreen" class="game-screen active">
+            <div class="screen-content">
+                <h1>🌟 Gold Sky 🌟</h1>
+                <p class="instructions">
+                    Use arrow keys to move your basket and collect falling gold pieces!<br>
+                    Larger gold = more points. Don't let them fall!
+                </p>
+                <button id="startBtn" class="game-btn primary">Start Game</button>
+                <div class="controls-info">
+                    <p><strong>Controls:</strong> Arrow Keys to move</p>
+                    <p><strong>Goal:</strong> Collect as much gold as possible before time runs out!</p>
+                </div>
+            </div>
+        </div>
 
-        // Simple fade-in animation on scroll
-        function fadeInOnScroll() {
-            const elements = document.querySelectorAll('.content-section, .feature-card');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
+        <div id="pauseScreen" class="game-screen">
+            <div class="screen-content">
+                <h2>Game Paused</h2>
+                <button id="resumeBtn" class="game-btn primary">Resume</button>
+                <button id="restartBtn" class="game-btn secondary">Restart</button>
+            </div>
+        </div>
 
-        // Initial setup for fade-in animation
-        document.querySelectorAll('.content-section, .feature-card').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
+        <div id="gameOverScreen" class="game-screen">
+            <div class="screen-content">
+                <h2>Game Over!</h2>
+                <p class="final-score">Final Score: <span id="finalScore">0</span></p>
+                <p id="newHighScore" class="new-high-score" style="display: none;">🎉 New High Score! 🎉</p>
+                <button id="playAgainBtn" class="game-btn primary">Play Again</button>
+                <button id="shareBtn" class="game-btn secondary">Share Score</button>
+            </div>
+        </div>
 
-        window.addEventListener('scroll', fadeInOnScroll);
-        window.addEventListener('load', fadeInOnScroll);
-    </script>
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="game-screen">
+            <div class="screen-content">
+                <h2>Loading Gold Sky...</h2>
+                <div class="loading-bar">
+                    <div id="loadingProgress" class="loading-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="pickupSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjiS1vLM" type="audio/wav">
+    </audio>
+    <audio id="missSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjiS1vLM" type="audio/wav">
+    </audio>
+    <audio id="startSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjiS1vLM" type="audio/wav">
+    </audio>
+
+    <script src="game.js"></script>
 </body>
 </html>
